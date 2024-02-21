@@ -1,3 +1,6 @@
+This is a complete react config template for persian react developer
+we configed react(ts) , rtl and iranian font, redux, toolkit, mui, mantine, antD, redux persist, axios, interceptores and etc
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
