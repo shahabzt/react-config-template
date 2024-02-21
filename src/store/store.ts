@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-
+import activeMenuIndexReducer from "./reducers/activeMenuItems";
 import {
   FLUSH,
   REHYDRATE,
@@ -15,10 +15,12 @@ import storage from "redux-persist/lib/storage";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: [""],
+  whitelist: ["activeMenuTitle"],
 };
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+  activeMenuItem: activeMenuIndexReducer,
+});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
