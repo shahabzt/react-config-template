@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { QueryClient, QueryClientProvider } from "react-query";
+import "./App.css";
+import { Provider } from "react-redux";
+import { persistor, store } from "./store/store";
+import { PersistGate } from "redux-persist/integration/react";
+import { RouterProvider } from "react-router-dom";
+import { Router } from "./pages/Route";
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <RouterProvider router={Router} />
+          <div className='App'>Template For React Config</div>
+        </PersistGate>
+      </Provider>
+    </QueryClientProvider>
   );
 }
 
