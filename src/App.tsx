@@ -18,7 +18,9 @@ import createCache from "@emotion/cache";
 import { prefixer } from "stylis";
 import rtlPlugin from "stylis-plugin-rtl";
 import MuiTheme from "./theme/MuiTheme";
-
+// Mantine
+import { MantineProvider } from "@mantine/core";
+import { MantineTheme } from "./theme/MantineTheme";
 const queryClient = new QueryClient();
 
 function App() {
@@ -32,8 +34,10 @@ function App() {
         <CacheProvider value={cacheRtl}>
           <PersistGate persistor={persistor}>
             <ConfigProvider theme={antDTheme}>
-              <ThemeProvider theme={MuiTheme}></ThemeProvider>
+              <ThemeProvider theme={MuiTheme}>
+              <MantineProvider theme={MantineTheme} ></MantineProvider>
               <RouterProvider router={Router} />
+              </ThemeProvider>
             </ConfigProvider>
             <div className='App'>Template For React Config</div>
           </PersistGate>
