@@ -21,6 +21,8 @@ import MuiTheme from "./theme/MuiTheme";
 // Mantine
 import { MantineProvider } from "@mantine/core";
 import { MantineTheme } from "./theme/MantineTheme";
+//Zustand
+import { useBookStore } from "./store/zustandStore/bookStore";
 const queryClient = new QueryClient();
 
 function App() {
@@ -28,6 +30,10 @@ function App() {
     key: "muirtl",
     stylisPlugins: [prefixer, rtlPlugin],
   });
+  const amount = useBookStore((state) => state.amount);
+  const updateAmount = useBookStore((state) => state.updateAmount);
+
+
   return (
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
@@ -35,11 +41,14 @@ function App() {
           <PersistGate persistor={persistor}>
             <ConfigProvider theme={antDTheme}>
               <ThemeProvider theme={MuiTheme}>
-              <MantineProvider theme={MantineTheme} ></MantineProvider>
-              <RouterProvider router={Router} />
+                <MantineProvider theme={MantineTheme}></MantineProvider>
+                <RouterProvider router={Router} />
               </ThemeProvider>
             </ConfigProvider>
-            <div className='App'>Template For React Config</div>
+            <div className='App'>Template For React Config
+            <button onClick={()=> updateAmount(amount + 1)} >zustand {amount} </button>
+            
+            </div>
           </PersistGate>
         </CacheProvider>
       </Provider>
