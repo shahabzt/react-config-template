@@ -1,8 +1,23 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter,Outlet } from "react-router-dom";
+import Button from "../components/Button";
+import Info from "../components/Info";
 
-export const Router = createBrowserRouter([
+export const router = createBrowserRouter([
   {
-    path: "",
-    element: <></>,
+    path: "/",
+    element: <Button/>,
+    
+    children: [
+      {
+        path: "info",
+        element: <Info />,
+        
+      },
+      {
+        path: "x",
+        element: <>x</>,
+        
+      },
+    ],
   },
 ]);

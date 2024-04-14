@@ -7,7 +7,7 @@ import { persistor, store } from "./store/store";
 import { PersistGate } from "redux-persist/integration/react";
 //React-Router-Dom
 import { RouterProvider } from "react-router-dom";
-import { Router } from "./pages/Route";
+import { router } from "./pages/Route";
 //AntD Theme
 import { ConfigProvider } from "antd";
 import { antDTheme } from "./theme/antDTheme";
@@ -23,6 +23,7 @@ import { MantineProvider } from "@mantine/core";
 import { MantineTheme } from "./theme/MantineTheme";
 //Zustand
 import { useBookStore } from "./store/zustandStore/bookStore";
+import { useEffect } from "react";
 const queryClient = new QueryClient();
 
 function App() {
@@ -42,7 +43,7 @@ function App() {
             <ConfigProvider theme={antDTheme}>
               <ThemeProvider theme={MuiTheme}>
                 <MantineProvider theme={MantineTheme}></MantineProvider>
-                <RouterProvider router={Router} />
+                <RouterProvider router={router} />
               </ThemeProvider>
             </ConfigProvider>
             <div className='App'>Template For React Config
